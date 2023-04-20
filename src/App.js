@@ -46,7 +46,6 @@ function App() {
 
   const updateEmployeesList = (employee) => {
     setEmployees([...employees, employee]);
-    console.log(employees);
   };
 
   return (
@@ -58,9 +57,13 @@ function App() {
       />
       {teams.map((team) => (
         <Team
+          key={team.name}
           title={team.name}
           primaryColor={team.primaryColor}
           secondaryColor={team.secondaryColor}
+          employees={employees.filter(
+            (employee) => employee.team === team.name
+          )}
         />
       ))}
     </div>
