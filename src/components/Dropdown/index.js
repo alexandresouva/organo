@@ -7,7 +7,11 @@ const Dropdown = (props) => {
   return (
     <div className="dropdown">
       <label>{props.label}</label>
-      <select onChange={updateTextInput} required={props.required}>
+      <select
+        value={props.value}
+        onChange={updateTextInput}
+        required={props.required}
+      >
         {props.items.map((item) => (
           <option key={item}>{item}</option>
         ))}

@@ -20,6 +20,11 @@ const Form = (props) => {
       image,
       team,
     });
+
+    setName('');
+    setPosition('');
+    setImage('');
+    setTeam(teams[0]);
   };
 
   return (
@@ -29,18 +34,20 @@ const Form = (props) => {
         <TextInput
           label="Nome"
           placeholder="Digite o seu nome"
-          required={true}
+          value={name}
           updateValue={(value) => setName(value)}
         />
         <TextInput
           label="Cargo"
           placeholder="Digite o seu cargo"
           required={true}
+          value={position}
           updateValue={(value) => setPosition(value)}
         />
         <TextInput
           label="Imagem"
           placeholder="Digite o endereço da imagem"
+          required={true}
           value={image}
           updateValue={(value) => setImage(value)}
         />
@@ -48,6 +55,7 @@ const Form = (props) => {
           label="Times"
           items={props.teams}
           required={true}
+          value={team}
           updateValue={(value) => setTeam(value)}
         />
         <Button>Criar Card</Button>
