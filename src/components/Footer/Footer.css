@@ -1,0 +1,36 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  background-color: #6278F7;
+  padding: 50px 0;
+}
+
+.footer__icons {
+  display: flex;
+  gap: 32px;
+}
+
+.footer__icon {
+  list-style: none;
+}
+
+.footer__credits {
+  color: #FFF
+}
+
+.footer__credits a {
+  color: #FFF;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .footer{
+    flex-direction: column;
+    gap: 40px;
+    padding: 30px 0;
+  }
+}
+
