@@ -34,6 +34,7 @@ const Form = (props) => {
         <TextInput
           label="Nome"
           placeholder="Digite o seu nome"
+          required={true}
           value={name}
           updateValue={(value) => setName(value)}
         />

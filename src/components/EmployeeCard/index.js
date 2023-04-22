@@ -1,9 +1,9 @@
 import './EmployeeCard.css';
 
-const EmployeeCard = ({ name, position, image }) => {
+const EmployeeCard = ({ name, position, image, bgColor }) => {
   return (
     <div className="employee">
-      <div className="employee__header">
+      <div className="employee__header" style={{ backgroundColor: bgColor }}>
         <img
           className="employee__photo"
           src={image}
