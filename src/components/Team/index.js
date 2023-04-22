@@ -1,21 +1,38 @@
 import './Team.css';
 import EmployeeCard from '../EmployeeCard';
+import hexToRgba from 'hex-to-rgba';
 
-const Team = ({ title, primaryColor, secondaryColor, employees }) => {
+const Team = ({ title, color, changeColor, employees }) => {
+  const updateTeamColor = (e) => {
+    changeColor(e.target.value, title);
+  };
+
   return (
     employees.length > 0 && (
-      <section className="team" style={{ backgroundColor: secondaryColor }}>
-        <h3 className="team__title" style={{ borderColor: primaryColor }}>
+      <section
+        className="team"
+        style={{
+          backgroundColor: hexToRgba(color, '0.4'),
+          backgroundImage: 'url(/images/fundo.png',
+        }}
+      >
+        <input
+          value={color}
+          onChange={updateTeamColor}
+          type="color"
+          className="team__color"
+        />
+        <h3 className="team__title" style={{ borderColor: color }}>
           {title}
         </h3>
-        <div className="employees">
+        <div className="team__employees">
           {employees.map((employee) => (
             <EmployeeCard
               key={employee.image}
               name={employee.name}
               position={employee.position}
               image={employee.image}
-              bgColor={primaryColor}
+              color={color}
             />
           ))}
         </div>

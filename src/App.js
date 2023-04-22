@@ -5,48 +5,50 @@ import Team from './components/Team';
 import Footer from './components/Footer';
 
 function App() {
-  const teams = [
+  const [teams, setTeams] = useState([
     {
       name: 'Programação',
-      primaryColor: '#57C278',
-      secondaryColor: '#D9F7E9',
+      color: '#D9F7E9',
     },
     {
       name: 'Front End',
-      primaryColor: '#82CFFA',
-      secondaryColor: '#E8F8FF',
+      color: '#E8F8FF',
     },
     {
       name: 'Data Science',
-      primaryColor: '#A6D157',
-      secondaryColor: '#F0F8E2',
+      color: '#F0F8E2',
     },
     {
       name: 'Devops',
-      primaryColor: '#E06B69',
-      secondaryColor: '#FDE7E8',
+      color: '#FDE7E8',
     },
     {
       name: 'UX e Design',
-      primaryColor: '#DB6EBF',
-      secondaryColor: '#FAE9F5',
+      color: '#FAE9F5',
     },
     {
       name: 'Mobile',
-      primaryColor: '#FFBA05',
-      secondaryColor: '#FFF5D9',
+      color: '#FFF5D9',
     },
     {
       name: 'Inovação e Gestão',
-      primaryColor: '#FF8A29',
-      secondaryColor: '#FFEEDF',
+      color: '#FFEEDF',
     },
-  ];
+  ]);
 
   let [employees, setEmployees] = useState([]);
 
   const updateEmployeesList = (employee) => {
     setEmployees([...employees, employee]);
+  };
+
+  const updateTeamColor = (color, teamName) => {
+    setTeams(
+      teams.map((team) => {
+        if (team.name === teamName) team.color = color;
+        return team;
+      })
+    );
   };
 
   return (
@@ -60,8 +62,8 @@ function App() {
         <Team
           key={team.name}
           title={team.name}
-          primaryColor={team.primaryColor}
-          secondaryColor={team.secondaryColor}
+          color={team.color}
+          changeColor={updateTeamColor}
           employees={employees.filter(
             (employee) => employee.team === team.name
           )}
