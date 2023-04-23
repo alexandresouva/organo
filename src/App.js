@@ -59,6 +59,18 @@ function App() {
     );
   };
 
+  const createTeam = (newTeam) => {
+    const isARepeatedTeam = teams
+      .map((team) => team.name)
+      .includes(newTeam.name);
+
+    if (isARepeatedTeam) {
+      alert('Esse time já está cadastrado.');
+      return;
+    }
+    setTeams([...teams, { id: uuidv4(), ...newTeam }]);
+  };
+
   const deleteEmployee = (id) => {
     setEmployees(employees.filter((employee) => employee.id !== id));
   };
@@ -68,6 +80,7 @@ function App() {
       <Banner />
       <Form
         teams={teams.map((team) => team.name)}
+        createTeam={createTeam}
         updateEmployeesList={(employee) => updateEmployeesList(employee)}
       />
       {teams.map((team) => (
