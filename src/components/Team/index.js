@@ -2,9 +2,9 @@ import './Team.css';
 import EmployeeCard from '../EmployeeCard';
 import hexToRgba from 'hex-to-rgba';
 
-const Team = ({ title, color, changeColor, employees }) => {
+const Team = ({ id, title, color, changeColor, employees }) => {
   const updateTeamColor = (e) => {
-    changeColor(e.target.value, title);
+    changeColor(e.target.value, id);
   };
 
   return (
@@ -12,7 +12,7 @@ const Team = ({ title, color, changeColor, employees }) => {
       <section
         className="team"
         style={{
-          backgroundColor: hexToRgba(color, '0.4'),
+          backgroundColor: hexToRgba(color, '0.2'),
           backgroundImage: 'url(/images/fundo.png',
         }}
       >
