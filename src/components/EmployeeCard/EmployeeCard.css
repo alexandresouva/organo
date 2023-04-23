@@ -1,18 +1,30 @@
 .employee {
+  position: relative;
   width: 280px;
+}
+
+.employee__deleteBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  color: #FFF;
+  cursor: pointer;
 }
 
 .employee__header {
   background-color:  #F0F0F0;
   border-radius: 10px 10px 0px 0px;
+  min-height: 100px;
 }
 
 .employee__photo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
   position: relative;
   bottom: -50px;
+  
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
 }
 
 .employee__footer {
@@ -26,14 +38,14 @@
 .employee__footer h4 {
   color: #6278F7;
   font-size: 18px;
-  line-height: 22px;
   font-weight: bold;
+  line-height: 22px;
   margin-bottom: 8px;
 }
 
 .employee__footer h5 {
+  color: #212121;
   font-size: 18px;
   line-height: 22px;
-  color: #212121;
   padding: 0 16px;
 }

@@ -59,6 +59,10 @@ function App() {
     );
   };
 
+  const deleteEmployee = (id) => {
+    setEmployees(employees.filter((employee) => employee.id !== id));
+  };
+
   return (
     <div className="App">
       <Banner />
@@ -69,13 +73,12 @@ function App() {
       {teams.map((team) => (
         <Team
           key={team.id}
-          id={team.id}
-          title={team.name}
-          color={team.color}
-          changeColor={updateTeamColor}
+          team={team}
           employees={employees.filter(
             (employee) => employee.team === team.name
           )}
+          changeColor={updateTeamColor}
+          whenDeleting={deleteEmployee}
         />
       ))}
       <Footer />

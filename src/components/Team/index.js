@@ -2,37 +2,40 @@ import './Team.css';
 import EmployeeCard from '../EmployeeCard';
 import hexToRgba from 'hex-to-rgba';
 
-const Team = ({ id, title, color, changeColor, employees }) => {
+const Team = ({
+  team,
+  employees,
+  changeColor,
+  whenDeleting: deleteEmployee,
+}) => {
   const updateTeamColor = (e) => {
-    changeColor(e.target.value, id);
+    changeColor(e.target.value, team.id);
   };
-
   return (
     employees.length > 0 && (
       <section
         className="team"
         style={{
-          backgroundColor: hexToRgba(color, '0.2'),
+          backgroundColor: hexToRgba(team.color, '0.2'),
           backgroundImage: 'url(/images/fundo.png',
         }}
       >
         <input
-          value={color}
+          value={team.color}
           onChange={updateTeamColor}
           type="color"
           className="team__color"
         />
-        <h3 className="team__title" style={{ borderColor: color }}>
-          {title}
+        <h3 className="team__title" style={{ borderColor: team.color }}>
+          {team.name}
         </h3>
         <div className="team__employees">
-          {employees.map((employee) => (
+          {employees.map((employee, i) => (
             <EmployeeCard
-              key={employee.image}
-              name={employee.name}
-              position={employee.position}
-              image={employee.image}
-              color={color}
+              key={i}
+              employee={employee}
+              color={team.color}
+              whenDeleting={deleteEmployee}
             />
           ))}
         </div>

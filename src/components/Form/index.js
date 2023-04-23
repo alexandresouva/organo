@@ -3,6 +3,7 @@ import TextInput from '../TextInput';
 import Dropdown from '../Dropdown';
 import Button from '../Button';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const Form = (props) => {
   const teams = props.teams;
@@ -15,6 +16,7 @@ const Form = (props) => {
     e.preventDefault();
 
     props.updateEmployeesList({
+      id: uuidv4(),
       name,
       position,
       image,
