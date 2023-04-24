@@ -7,6 +7,7 @@ const Team = ({
   employees,
   changeColor,
   whenDeleting: deleteEmployee,
+  whenToFavorite: favoriteEmployer,
 }) => {
   const updateTeamColor = (e) => {
     changeColor(e.target.value, team.id);
@@ -36,6 +37,7 @@ const Team = ({
               employee={employee}
               color={team.color}
               whenDeleting={deleteEmployee}
+              whenToFavorite={favoriteEmployer}
             />
           ))}
         </div>

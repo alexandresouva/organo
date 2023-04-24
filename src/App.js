@@ -20,7 +20,7 @@ function App() {
     {
       id: uuidv4(),
       name: 'Data Science',
-      color: '#82CFFA',
+      color: '#A6D157',
     },
     {
       id: uuidv4(),
@@ -44,7 +44,50 @@ function App() {
     },
   ]);
 
-  let [employees, setEmployees] = useState([]);
+  let [employees, setEmployees] = useState([
+    {
+      id: uuidv4(),
+      name: 'JULIANA AMOASEI',
+      position: 'Desenvolvedora de software',
+      image:
+        'https://www.alura.com.br/assets/img/lideres/juliana-amoasei.1647533644.jpeg',
+      team: teams[0].name,
+      favorite: false,
+    },
+    {
+      id: uuidv4(),
+      name: 'ALEXANDRE SOUSA',
+      position: 'Engenheiro de Software',
+      image: 'https://github.com/alexandresouva.png',
+      team: teams[0].name,
+      favorite: false,
+    },
+    {
+      id: uuidv4(),
+      name: 'PAULO SILVEIRA',
+      position: 'Hipster e CEO da Alura',
+      image:
+        'https://www.alura.com.br/assets/img/lideres/paulo-silveira.1647533644.jpeg',
+      team: teams[0].name,
+      favorite: false,
+    },
+    {
+      id: uuidv4(),
+      name: 'FLAVIO ROMEIRO',
+      position: 'Analista de Dados',
+      image: 'https://github.com/flaviogsromeiro.png',
+      team: teams[2].name,
+      favorite: false,
+    },
+    {
+      id: uuidv4(),
+      name: 'JOÃO ABREU',
+      position: 'Cientista de Dados',
+      image: 'https://github.com/joaoabreu004.png',
+      team: teams[2].name,
+      favorite: false,
+    },
+  ]);
 
   const updateEmployeesList = (employee) => {
     setEmployees([...employees, employee]);
@@ -75,6 +118,15 @@ function App() {
     setEmployees(employees.filter((employee) => employee.id !== id));
   };
 
+  const favoriteEmployer = (id) => {
+    setEmployees(
+      employees.map((employee) => {
+        if (employee.id == id) employee.favorite = !employee.favorite;
+        return employee;
+      })
+    );
+  };
+
   return (
     <div className="App">
       <Banner />
@@ -92,6 +144,7 @@ function App() {
           )}
           changeColor={updateTeamColor}
           whenDeleting={deleteEmployee}
+          whenToFavorite={favoriteEmployer}
         />
       ))}
       <Footer />

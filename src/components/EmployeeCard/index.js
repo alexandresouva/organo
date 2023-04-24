@@ -1,7 +1,28 @@
 import './EmployeeCard.css';
 import { FaWindowClose } from 'react-icons/fa';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { useState } from 'react';
 
-const EmployeeCard = ({ employee, color, whenDeleting: deleteEmployee }) => {
+const EmployeeCard = ({
+  employee,
+  color,
+  whenDeleting: deleteEmployee,
+  whenToFavorite: favoriteEmployer,
+}) => {
+  // const [isFavorite, setIsFavorite] = useState(employee.favorite);
+
+  // const favoriteToggle = () => {
+  //   setIsFavorite(!isFavorite);
+  // };
+
+  const toggleFavoriteEmployer = () => {
+    favoriteEmployer(employee.id);
+  };
+  const favoriteIconProps = {
+    size: 24,
+    onClick: toggleFavoriteEmployer,
+    className: 'favoriteIcon',
+  };
   return (
     <div className="employee">
       <FaWindowClose
@@ -19,6 +40,11 @@ const EmployeeCard = ({ employee, color, whenDeleting: deleteEmployee }) => {
       <div className="employee__footer">
         <h4>{employee.name}</h4>
         <h5>{employee.position}</h5>
+        {employee.favorite ? (
+          <AiFillHeart {...favoriteIconProps} color="rgb(199, 51, 51)" />
+        ) : (
+          <AiOutlineHeart {...favoriteIconProps} />
+        )}
       </div>
     </div>
   );
